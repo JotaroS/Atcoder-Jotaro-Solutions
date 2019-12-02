@@ -1,0 +1,16 @@
+import std.stdio;
+import std.string;
+import std.conv;
+void main()
+{
+	// 整数の入力
+	int a = to!int(chomp(readln()));
+	// スペース区切りの整数の入力
+	string[] input = split(readln());
+	int b = to!int(input[0]);
+	int c = to!int(input[1]);
+	// 文字列の入力
+	string s = chomp(readln());
+	// 出力
+	writefln("%d %s", a+b+c, s);
+}

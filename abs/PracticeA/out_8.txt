@@ -1,0 +1,14 @@
+var
+    a, b, c : integer;
+    s : ShortString;
+begin
+    { 整数の入力 }
+    readln(a);
+    { スペース区切りの整数の入力 }
+    read(b);
+    readln(c);
+    { 文字列の入力 }
+    readln(s);
+    { 出力 }
+    writeln(a+b+c, ' ', s);
+end.

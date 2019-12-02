@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "list": "cpp",
+        "memory": "cpp",
+        "utility": "cpp"
+    }
+}
