@@ -1,5 +1,10 @@
 {
  "code_filename": "main.cpp",
+ "judge": {
+  "diff": 1e-05,
+  "error_type": "absolute_or_relative",
+  "judge_type": "decimal"
+ },
  "lang": "cpp",
  "problem": {
   "alphabet": "B",

@@ -82,8 +82,29 @@ const double PI = acos(-1.0);
 
 const string YES = "Yes";
 const string NO = "No";
-
-void solve(long long N, std::vector<long long> A, std::vector<long long> B) {}
+bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
+    if(a.second != b.second){
+        return a.second < b.second;
+    }else{
+        return a.first < b.first;
+    }
+}
+void solve(long long N, std::vector<long long> A, std::vector<long long> B) {
+  vector<pair<LL,LL > > p;
+    REP(i,N)
+      p.PB(make_pair(A[i],B[i]));
+    
+    sort(p.begin(), p.end(), compare_by_b);
+    LL time= 0;
+    REP(i, N){
+      time+=p[i].first;
+      if(time>p[i].second){
+        cout<<NO<<endl;
+        return;
+      }
+    }
+  cout<<YES<<endl;
+}
 
 int main() {
   long long N;

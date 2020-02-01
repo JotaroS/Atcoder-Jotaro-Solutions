@@ -86,17 +86,64 @@ void solve(long long A, long long B, long long C, long long D) {
   int c = B/(C*D) - A/(C*D);
   cout<<a+b-c<<endl;
 }
+bool IsPrime(int num)
+{
+    if (num < 2) return false;
+    else if (num == 2) return true;
+    else if (num % 2 == 0) return false; // 偶数はあらかじめ除く
 
+    double sqrtNum = sqrt(num);
+    for (int i = 3; i <= sqrtNum; i += 2)
+    {
+        if (num % i == 0)
+        {
+            // 素数ではない
+            return false;
+        }
+    }
+
+    // 素数である
+    return true;
+}
+
+LL gcd(LL m, LL n){
+  LL temp;
+  while(n!=0){
+    temp=n;  // t=2 1
+    n = m%n; // n=1 0
+    m=temp;  // m=2 1
+  }
+  return m;
+}
+
+LL lcm(LL m,LL n){
+  return m*n/gcd(m,n);
+}
 int main() {
-  long long A;
-  scanf("%lld", &A);
-  long long B;
-  scanf("%lld", &B);
-  long long C;
-  scanf("%lld", &C);
-  long long D;
-  scanf("%lld", &D);
-  solve(A, B, C, D);
+  LL A,B;
+  LL C,D;
+  cin>>A>>B>>C>>D;
+  A--;
+  A -= (A/C)+(A/D)-A/lcm(C,D);
+  B -= (B/C)+(B/D)-B/lcm(C,D);
+  cout<<B-A<<endl;
   return 0;
 }
 
+/*
+
+
+1 10 2 3
+
+1 2' 3' 4' 5 6'' 7 8' 9' 10
+10 - (10/2);
+10 - (10/3);
+
+10+10/lcm(2,3);
+
+4' 5 6' 7 8' 9' : 2
+
+1 2 3 4: 1
+
+1 2' 3' 4' 5 6' 7 8' 9'
+*/

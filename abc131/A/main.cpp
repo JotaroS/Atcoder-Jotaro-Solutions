@@ -85,11 +85,17 @@ void solve(long long S) {
 }
 
 int main() {
-  string s;
-  cin>>s;
-  if(s[0]==s[1] ||s[1]==s[2] ||s[2]==s[3]){
-    cout<<"Bad"<<endl;
+  int t;
+  cin>>t;
+  REP(_, t){
+    LL a,b,c,n;
+    cin>>a>>b>>c>>n;
+    LL m = max(a,(max(b,c)));
+    LL minim = min(a,(min(b,c)));
+    bool f=false;
+    if((n-3LL*m+a+b+c)%(LL)3==0 &&(n-3LL*m+a+b+c)>=0)f=true;
+    // debug(n-3LL*m+a+b+c)
+    if(f)cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
   }
-  else cout<<"Good"<<endl;
-  return 0;
 }

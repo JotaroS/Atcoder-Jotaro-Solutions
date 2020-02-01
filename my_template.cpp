@@ -69,6 +69,15 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+//pair sort
+bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
+    if(a.second != b.second){
+        return a.second < b.second;
+    }else{
+        return a.first < b.first;
+    }
+}
+
 {% if mod %}
 const long long MOD = {{ mod }};
 {% endif %}
