@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include <vector>
 #include <list>
@@ -80,7 +81,12 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 
 
 void solve(long long N, long long W, std::vector<long long> w, std::vector<long long> v){
-
+    LL dp[N][W];
+    REP(i, N){
+        REP(j, W){
+            dp[i][j]=
+        }
+    }
 }
 
 int main(){

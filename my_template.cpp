@@ -69,14 +69,17 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+//chmax chmin
+template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
+template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
+
+
 //pair sort
 bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
-    if(a.second != b.second){
-        return a.second < b.second;
-    }else{
-        return a.first < b.first;
-    }
+    if(a.second != b.second) return a.second < b.second;
+    else return a.first < b.first;
 }
+std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 
 {% if mod %}
 const long long MOD = {{ mod }};

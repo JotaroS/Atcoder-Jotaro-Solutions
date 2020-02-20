@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include <vector>
 #include <list>
@@ -80,6 +81,10 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 
 
 void solve(std::vector<long long> x, std::vector<long long> y){
+    int dx = x[1]-x[0];
+    int dy = y[1]-y[0];
+    cout<<x[1]-dy<<" "<<y[1]+dx <<" "<<x[0]-dy<<" "<<y[0]+dx<<endl;
+    return;
 
 }
 

@@ -80,6 +80,25 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 
 
 void solve(long long N, std::string S){
+    int a=0;
+    int b=0;
+    int cnt=0;
+    REP(i, S.size()){
+        if(S[i]=='(')cnt++;
+        else cnt--;
+        if(cnt<0){
+            a++;
+            cnt=0;
+        }
+    }
+    REP(i,a){
+        cout<<"(";
+    }
+    cout<<S;
+    REP(i,cnt){
+        cout<<")";
+    }cout<<endl;
+    return;
 
 }
 

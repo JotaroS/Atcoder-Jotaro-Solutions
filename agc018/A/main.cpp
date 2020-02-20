@@ -71,9 +71,28 @@ const double PI  = acos(-1.0);
 
 const string YES = "POSSIBLE";
 const string NO = "IMPOSSIBLE";
-
+unsigned euclidean_gcd(unsigned a, unsigned b) {
+  if(a < b) return euclidean_gcd(b, a);
+  unsigned r;
+  while ((r=a%b)) {
+    a = b;
+    b = r;
+  }
+  return b;
+}
 void solve(long long N, long long K, std::vector<long long> A){
-
+    LL my_gcd=A[0];
+    LL maxval =0;
+    REP(i, N){
+        my_gcd = euclidean_gcd(my_gcd, A[i]);
+        maxval =max(maxval, A[i]);
+    }
+ 
+    if(K%my_gcd==0 && K <= maxval){
+        cout<<YES<<endl;
+    }
+    else cout<<NO<<endl;
+    return;
 }
 
 int main(){

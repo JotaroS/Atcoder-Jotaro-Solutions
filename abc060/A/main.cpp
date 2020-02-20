@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include <vector>
 #include <list>
@@ -82,7 +83,9 @@ const string YES = "YES";
 const string NO = "NO";
 
 void solve(std::string A, std::string B, std::string C){
-
+    if(A[A.size()-1]==B[0] && B[B.size()-1] == C[0])cout<<YES<<endl;
+    else cout<<NO<<endl;
+    return;;
 }
 
 int main(){
@@ -93,5 +96,6 @@ int main(){
     std::string C;
     std::cin >> C;
     solve(A, B, C);
+    
     return 0;
 }

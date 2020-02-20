@@ -70,10 +70,37 @@ const double PI  = acos(-1.0);
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 const long long MOD = 1000000007;
+bool isprime(int n){
+    for(int i = 2; i < sqrt(n); i++){
+    if(n % i == 0){
+    return false;
+    break;
+    }
+    else
+    return true;
+    }
+    return true;
+}
 
 void solve(long long N){
-
+    VI cnt;
+    for(int i=1; i<=(N); i++){
+        if(N%i==0 && isprime(i)){
+            cnt.PB(N/i);
+        }
+    }
+    LL ans=1;
+    REP(i,cnt.size()){
+        ans+=cnt[i]-1;
+  }
+  int res = 1;
+  REP(i, ans){
+      res=(res*2)%MOD;
+  }
+  cout<<res<<endl;
 }
+
+
 
 LL myfact(LL n){
     LL ans=1;
@@ -84,8 +111,8 @@ LL myfact(LL n){
 }
 
 int main(){
-    char c = 255;
-    if(c>10)printf("c=%i\n",c);
-    else printf("c=%i less\n");
+    LL N;
+    cin>>N;
+    solve(N);
     return 0;
 }

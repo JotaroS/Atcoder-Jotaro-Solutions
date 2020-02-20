@@ -81,7 +81,21 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 const long long MOD = 1000000007;
 
 void solve(long long N, long long M){
+    if(abs(N-M)>1)cout<<0<<endl;
+    // else cout<<1<<endl;
+    else{
+        LL ans=1;
+        for(int i=1; i <=N; i++){
+            ans = (ans*i)%MOD;
+        }
 
+        for(int i=1; i <=M; i++){
+            ans = (ans*i)%MOD;
+        }
+        // cout<<ans*2%MOD<<endl;
+        if(N==M)cout<<ans*2%MOD<<endl;
+        else cout<<ans<<endl;
+    }
 }
 
 int main(){

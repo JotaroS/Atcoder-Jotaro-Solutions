@@ -80,7 +80,12 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 
 
 void solve(long long N, long long T, std::vector<long long> t){
-
+    LL ans=0;
+    REP(i,N-1){
+        if(t[i+1]-t[i]<T)ans+=t[i+1]-t[i];
+        else ans+=T;
+    }
+    cout<<ans+T<<endl;
 }
 
 int main(){

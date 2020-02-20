@@ -73,6 +73,12 @@ const string YES = "YES";
 const string NO = "NO";
 
 void solve(std::string Name){
+    string rev = Name;
+    reverse(ALL(rev));
+    if(rev==Name)cout<<YES<<endl;
+    else cout<<NO<<endl;
+    return;
+
 
 }
 
