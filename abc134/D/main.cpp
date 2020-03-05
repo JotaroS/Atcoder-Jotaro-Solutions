@@ -81,16 +81,59 @@ const double PI = acos(-1.0);
        << " " << __FILE__ << endl;
 
 const long long MOD = 2;
+/*
 
-void solve(long long N, std::vector<long long> a) {}
+3
+1 0 0 ...
 
-int main() {
-  long long N;
-  scanf("%lld", &N);
-  std::vector<long long> a(N);
-  for (int i = 0; i < N; i++) {
-    scanf("%lld", &a[i]);
+1 1 1, 1;
+0 1 0  0
+0 0 1  0
+
+0 0 0 0 0 
+0
+
+1 1 0
+
+
+*/
+
+int table[501010];
+
+void make_table(int N){
+  REP(i, N+10)table[i]=0;
+  table[1]=1;
+  for(int i=2; i <= N; i++){
+    for(int j=1; j<=sqrt(i); j++){
+      if(i % j ==0) table[i]++;
+    }
+    table[i]++;
   }
-  solve(N, std::move(a));
+  return;
+}
+
+void solve(long long N, std::vector<long long> a) {
+}
+
+int a [202020];
+int b [202020];
+int main() {
+  int N;
+  cin>>N;
+  REP(i, N)cin>>a[i+1];
+  for(int i=N;i >=1; i--){
+    int cnt=0;
+    for(int j=2; i*j<=N; j++){
+      cnt += b[i*j];
+    }
+    if(cnt%2!=a[i])b[i]=1;
+  }
+  VI ans;
+  for(int i=1; i <=N; i++){
+    if(b[i]==1)ans.PB(i);
+  }
+  cout<<ans.size()<<endl;
+  for (auto i : ans)cout<<i<<" ";
+  cout<<endl;
   return 0;
 }

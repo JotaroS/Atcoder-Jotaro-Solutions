@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include <vector>
 #include <list>
@@ -70,6 +69,11 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+//chmaxs chmin
+template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
+template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
+
+
 //pair sort
 bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
     if(a.second != b.second) return a.second < b.second;
@@ -79,10 +83,17 @@ std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? eu
 
 
 void solve(long long N, std::vector<long long> a, std::vector<long long> b, std::vector<long long> c){
-    vector<LL> dp(N+1);
-    dp[0]=0;
-    dp[1]=max(max(a[0],b[0]),c[0]);
-    
+    LL dp[N+5][3];
+    REP(i, N+5)REP(j,3)dp[i][j]=0;
+    chmax(dp[0][0], a[0]);
+    chmax(dp[0][1], b[0]);
+    chmax(dp[0][2], c[0]);
+    FOR(i,1,N){
+        chmax(dp[i][0],max(dp[i-1][1] + a[i], dp[i-1][2]+a[i]));
+        chmax(dp[i][1],max(dp[i-1][0] + b[i], dp[i-1][2]+b[i]));
+        chmax(dp[i][2],max(dp[i-1][0] + c[i], dp[i-1][1]+c[i]));
+    }
+    cout<<max(dp[N-1][2],max(dp[N-1][0],dp[N-1][1]))<<endl;
 
 }
 

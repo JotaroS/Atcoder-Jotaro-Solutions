@@ -69,50 +69,27 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
-const long long MOD = 1000000007;
-bool isprime(int n){
-    for(int i = 2; i < sqrt(n); i++){
-    if(n % i == 0){
-    return false;
-    break;
-    }
-    else
-    return true;
-    }
-    return true;
+//chmaxs chmin
+template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
+template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
+
+
+//pair sort
+bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
+    if(a.second != b.second) return a.second < b.second;
+    else return a.first < b.first;
 }
+std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
+
+const long long MOD = 1000000007;
 
 void solve(long long N){
-    VI cnt;
-    for(int i=1; i<=(N); i++){
-        if(N%i==0 && isprime(i)){
-            cnt.PB(N/i);
-        }
-    }
-    LL ans=1;
-    REP(i,cnt.size()){
-        ans+=cnt[i]-1;
-  }
-  int res = 1;
-  REP(i, ans){
-      res=(res*2)%MOD;
-  }
-  cout<<res<<endl;
-}
 
-
-
-LL myfact(LL n){
-    LL ans=1;
-    for(LL i=1; i <=n; i++){
-        ans = ((ans)*2)%MOD;
-    }
-    return ans;
 }
 
 int main(){
-    LL N;
-    cin>>N;
+    long long N;
+    scanf("%lld",&N);
     solve(N);
     return 0;
 }

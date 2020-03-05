@@ -69,6 +69,11 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+//chmaxs chmin
+template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
+template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
+
+
 //pair sort
 bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
     if(a.second != b.second) return a.second < b.second;
@@ -78,17 +83,7 @@ std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? eu
 
 
 void solve(long long N, long long K, std::vector<long long> h){
-    VI dp(N);
-    dp[0]=0;
-    dp[1]=abs(h[1]-h[0]);
-    for(int i=2; i <N; i++){
-        LL minim = 10e10;
-        for(int j=1;j<=min((int)K,i);j++){
-            minim=min(minim, dp[i-j]+abs(h[i]-h[i-j]));
-        }
-        dp[i]=minim;
-    }
-    cout<<dp[N-1]<<endl;
+
 }
 
 int main(){

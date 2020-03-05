@@ -69,7 +69,7 @@ const double PI  = acos(-1.0);
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
-//chmax, chmin
+//chmaxs chmin
 template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
 
@@ -82,23 +82,19 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 
 
-void solve(int N, std::vector<int> h){
-    VI dp(N);
-    dp[0]=0;
-    dp[1]=abs(h[1]-h[0]);
-    for(int i=2; i <N; i++){
-        dp[i] = min(dp[i-1]+abs(h[i]-h[i-1]),dp[i-2]+abs(h[i]-h[i-2]));
-    }
-    cout<<dp[N-1]<<endl;
+void solve(long long N, std::vector<long long> h){
+    // int x[] = malloc(2sizeof(int));
 }
 
 int main(){
-    int N;
-    scanf("%d",&N);
-    std::vector<int> h(N);
+    cout<<"fuga"<<endl;
+    for(;0;){cout<<"hoge"<<endl;}
+    long long N;
+    scanf("%lld",&N);
+    std::vector<long long> h(N);
     for(int i = 0 ; i < N ; i++){
-        scanf("%d",&h[i]);
+        scanf("%lld",&h[i]);
     }
     solve(N, std::move(h));
-    return 0;
+    // return 0;
 }
