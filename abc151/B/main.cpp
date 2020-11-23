@@ -83,6 +83,7 @@ void solve(long long N, long long K, long long M, std::vector<long long> A){
 }
 
 int main(){
+    
     long long N;
     scanf("%lld",&N);
     long long K;

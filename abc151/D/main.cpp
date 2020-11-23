@@ -102,6 +102,7 @@ int main(){
     REP(i, 20){
         REP(j, 20){
             map[i][j]='#';
+            
         }
     }
     REP(i, H){

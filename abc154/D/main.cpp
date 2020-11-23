@@ -90,6 +90,7 @@ void solve(long long N, long long K, std::vector<long long> p){
         if(sum > maxsum){
             idx = i;
             maxsum=sum;
+            
         }
     }
     double ans=0.0;
