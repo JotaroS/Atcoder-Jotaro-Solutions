@@ -71,7 +71,31 @@ const double PI  = acos(-1.0);
 
 
 void solve(long long N, std::vector<std::string> s){
+    int ab =0;
+    int lb = 0;
+    int ra = 0;
+    int ralb = 0;
+    REP(i, N){
 
+        if(s[i][0] == 'B' && s[i][s[i].size()-1] == 'A') ralb++;
+        else if(s[i][0] == 'B') lb++;
+        else if(s[i][s[i].size()-1] == 'A') ra++;
+        REP(j, s[i].size()-1){
+            if(s[i][j] == 'A' && s[i][j+1]=='B')ab++;
+        }
+    }
+    if(lb ==0 && ra ==0){
+        cout<<max(0,ralb-1)+ab<<endl;return;
+    }
+    else{
+        int ret = ralb-1;
+        lb--; ra--;
+        
+        if(lb>=0)ret++;
+        if(ra>=0)ret++;
+        ret+=max(0,min(ra,lb));
+        cout<<ret+ab<<endl;
+    }
 }
 
 int main(){

@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string>
 #include <utility>
+#include <queue>
 #include <vector>
 using namespace std;
 typedef vector<int> VI;
@@ -50,13 +51,43 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, long long M, long long K, std::vector<long long> A, std::vector<long long> B){
-    int n=0;
-    int m =0;
+    queue<int> que_a;
+    queue<int> que_b;
+    rep(i, N)que_a.push(A[i]);
+    rep(i, M)que_b.push(B[i]);
+
     int sum =0;
-    int res =0;
-    while(sum<K){
-        
+    int ret =0;
+    int choice = 0;
+    bool flag;
+    if(que_a.front() < que_b.front()){
+        flag = true;
+        choice = que_a.front();
     }
+    else
+    {
+        flag= false;
+        choice = que_b.front();
+    }
+    while(sum+choice<=K){
+        if(flag)if(!que_a.empty())que_a.pop();
+        else if(!que_b.empty()) que_b.pop();
+        sum += choice;
+        ret++;
+        if(que_a.empty() && que_b.empty())break;
+        else if(que_a.empty())choice = que_b.front();
+        else if(que_b.empty()) choice = que_a.front();
+        else if(que_a.front() < que_b.front()){
+        flag = true;
+        choice = que_a.front();
+        }
+        else
+        {
+            flag= false;
+            choice = que_b.front();
+        }
+    }
+    cout<<ret<<endl;
 }
 int main(){
     long long N;
