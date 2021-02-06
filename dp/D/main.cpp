@@ -50,6 +50,23 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, long long W, std::vector<long long> w, std::vector<long long> v){
+    ll dp[N+1][100010];
+    for(int i=0;i<=N; i++){
+        for(int j=0; j < 100010; j++){
+            dp[i][j]=0;
+        }
+    }
+    for(int i=0;i<N; i++){
+        for(int j=0; j <= W; j++){
+            if(j-w[i]>=0)chmax(dp[i+1][j], dp[i][j-w[i]]+v[i]);
+            chmax(dp[i+1][j], dp[i][j]);
+        }
+    }
+    ll res = 0;
+    for(int i=0; i <= W; i++){
+        res = max(res, dp[N][i]);
+    }
+    cout<<dp[N][W]<<endl;
 }
 int main(){
     long long N;
