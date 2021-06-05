@@ -49,29 +49,17 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
     else return a.first < b.first;
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
-void solve(long long A, long long B, long long W){
-    int ret = 100000;
-    int maxret =0;
-    W*=1000;
-    for(int i=A; i <=B; i++){
-        for(int j=1;j<=1000; j++){
-            if (W == (i*j)){
-                ret = min(ret, j);
-                maxret = max(maxret, j);
-            }
-        }
-    }
-    if(maxret==0 && ret ==100000)cout<<"UNSATISFIABLE"<<endl;
-    else cout<<ret<<" "<<maxret<<endl;
-    return;
+void solve(long long H, long long W, long long A, long long B){
 }
 int main(){
-    long long A;
-    scanf("%lld",&A);
-    long long B;
-    scanf("%lld",&B);
+    long long H;
+    std::scanf("%lld", &H);
     long long W;
-    scanf("%lld",&W);
-    solve(A, B, W);
+    std::scanf("%lld", &W);
+    long long A;
+    std::scanf("%lld", &A);
+    long long B;
+    std::scanf("%lld", &B);
+    solve(H, W, A, B);
     return 0;
 }
