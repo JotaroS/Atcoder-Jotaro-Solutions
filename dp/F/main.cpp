@@ -50,6 +50,34 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(std::string s, std::string t){
+    int dp[s.size()+1][t.size()+1] = {0};
+    rep(i, s.size()+1){
+        rep(j, t.size()+1){
+            dp[i][j] = 0;
+        }
+    }
+    rep(i, s.size()){
+        rep(j, t.size()){
+            if(s[i] == t[j])chmax(dp[i+1][j+1], dp[i][j]+1);
+            chmax(dp[i+1][j+1], dp[i+1][j]);
+            chmax(dp[i+1][j+1], dp[i][j+1]);
+        }
+    }
+    string res = "";
+    int i = s.size(), j = t.size();
+    while(i>0 && j>0){
+        if(dp[i][j] == dp[i-1][j]){
+            i--;
+        }
+        else if(dp[i][j] == dp[i][j-1]){
+            j--;
+        }
+        else{
+            res = s[i-1] + res;
+            i--;j--;
+        }
+    }
+    cout<<res<<endl;
 }
 int main(){
     std::string s;

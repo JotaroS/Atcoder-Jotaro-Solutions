@@ -1,25 +1,4 @@
-#include <algorithm>
-#include <bitset>
-#include <cctype>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <ctime>
-#include <deque>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <list>
-#include <map>
-#include <numeric>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <stdio.h>
-#include <string>
-#include <utility>
-#include <vector>
+#include<bits/stdc++.h>
 using namespace std;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
@@ -49,6 +28,17 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, long long X, long long Y){
+    int ans[N+10];
+    rep(i, N+10)ans[i]=0;
+    for(LL i=1;i <= N-1; i++){
+        for(LL j=i+1; j<=N; j++){
+            LL ret = 10000000;
+            chmin(ret, abs(i-j));
+            chmin(ret, abs(X-i)+ abs(Y-j) +1);
+            ans[ret]++;
+        }
+    }
+    for(int i=1; i <N; i++)cout<<ans[i]<<endl;
 }
 int main(){
     long long N;

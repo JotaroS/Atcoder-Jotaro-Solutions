@@ -1,26 +1,4 @@
-
-#include <algorithm>
-#include <bitset>
-#include <cctype>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <ctime>
-#include <deque>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <list>
-#include <map>
-#include <numeric>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <stdio.h>
-#include <string>
-#include <utility>
-#include <vector>
+#include<bits/stdc++.h>
 using namespace std;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
@@ -51,26 +29,26 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, long long M, std::vector<long long> L, std::vector<long long> R){
-    vector <pair<ll,ll> > p;
+    vector< pair<LL, LL> >p;
     rep(i, M){
         p.PB(make_pair(L[i], R[i]));
     }
-    sort(p.begin(), p.end(), compare_by_b);
-    int idx =0;
-    for(int i=1; i <=N; i++){
-        if()
-    }
+    SORT(L);
+    SORT(R);
+    int v = R[0] - L[M-1]+1;
+    cout<<max(0, v)<<endl;
+    return;
 }
 int main(){
     long long N;
-    scanf("%lld",&N);
+    std::scanf("%lld", &N);
     long long M;
-    scanf("%lld",&M);
+    std::scanf("%lld", &M);
     std::vector<long long> L(M);
     std::vector<long long> R(M);
     for(int i = 0 ; i < M ; i++){
-        scanf("%lld",&L[i]);
-        scanf("%lld",&R[i]);
+        std::scanf("%lld", &L[i]);
+        std::scanf("%lld", &R[i]);
     }
     solve(N, M, std::move(L), std::move(R));
     return 0;

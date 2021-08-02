@@ -53,7 +53,7 @@ void solve(long long n){
     long long ret=0;
     ret += max(0LL,99-n/10);
     ret += max(0LL,9999-n/1000);
-    ret += max(0LL,999999-n);
+    ret += max(0LL,999999-n/100000);
     cout<<ret<<endl;
 }
 int main(){

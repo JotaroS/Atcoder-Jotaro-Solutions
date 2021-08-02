@@ -50,16 +50,12 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long A, long long B){
-    if(A<=5){cout<<0<<endl;}
-    else if(A<=12)cout<<B/2<<endl;
-    else cout<<B<<endl;
 }
 int main(){
     long long A;
-    scanf("%lld",&A);
+    std::scanf("%lld", &A);
     long long B;
-    scanf("%lld",&B);
+    std::scanf("%lld", &B);
     solve(A, B);
     return 0;
 }
-

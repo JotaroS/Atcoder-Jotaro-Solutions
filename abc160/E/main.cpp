@@ -49,6 +49,24 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long X, long long Y, long long A, long long B, long long C, std::vector<long long> p, std::vector<long long> q, std::vector<long long> r){
+    vector<LL> ret;
+    sort(ALL(p));
+    sort(ALL(q));
+    sort(ALL(r));
+    
+    reverse(ALL(p));
+    reverse(ALL(q));
+    reverse(ALL(r));
+    rep(i, X)ret.PB(p[i]);
+    rep(i, Y)ret.PB(q[i]);
+    rep(i, C)ret.PB(r[i]);
+
+    sort(ALL(ret));
+    reverse(ALL(ret));
+    LL result=0;
+    rep(i, X+Y)result += ret[i];
+    cout<<result<<endl;
+    return;
 }
 int main(){
     long long X;

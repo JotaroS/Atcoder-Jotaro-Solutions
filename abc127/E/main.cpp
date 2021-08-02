@@ -54,11 +54,11 @@ void solve(long long N, long long M, long long K){
 }
 int main(){
     long long N;
-    scanf("%lld",&N);
+    std::scanf("%lld", &N);
     long long M;
-    scanf("%lld",&M);
+    std::scanf("%lld", &M);
     long long K;
-    scanf("%lld",&K);
+    std::scanf("%lld", &K);
     solve(N, M, K);
     return 0;
 }
