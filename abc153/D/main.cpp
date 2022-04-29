@@ -77,8 +77,16 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 
 
-void solve(long long H){
-
+void solve(long long N){
+    long long num = 1;
+    long long ret = 0;
+    
+    while(N>=1){
+            N = N/2;
+            ret += num;
+            num *=2;
+    }
+    cout<<ret<<endl;
 }
 
 int main(){

@@ -71,7 +71,17 @@ const double PI  = acos(-1.0);
 
 
 void solve(long long N, long long M, long long X, std::vector<long long> A){
-
+    int ret =0;
+    int retb =0;
+    VI a(N);
+    REP(i, M)a[A[i]] = 1;
+    for(int i=X; i < N; i++){
+        ret += a[i];
+    }
+    for(int i=X; i > 0; i--){
+        retb += a[i];
+    }
+    cout<<min(ret, retb)<<endl;
 }
 
 int main(){
