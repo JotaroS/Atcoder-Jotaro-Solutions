@@ -84,10 +84,14 @@ void solve(long long A, long long B){
 }
 
 int main(){
-    long long A;
-    scanf("%lld",&A);
-    long long B;
-    scanf("%lld",&B);
-    solve(A, B);
-    return 0;
+    int a,b,c,x,y;
+    cin>>a>>b>>c>>x>>y;
+    int ret =  100000000;
+    for(int i=0; i <=x; i++){
+        for(int j=0; j <=y; j++){
+            int ab = max(x-i, y-j)*2;
+            ret= min(ret, i*a+ j*b+ ab*c);
+        }
+    }
+    cout<<ret<<endl;
 }

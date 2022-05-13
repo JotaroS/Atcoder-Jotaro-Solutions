@@ -55,7 +55,7 @@ typedef long long LL;
 //repetition
 //------------------------------------------
 #define FOR(i,a,b) for(int i=(a);i<(b);++i)
-#define REP(i,n)  FOR(i,0,n)
+#define rep(i,n)  FOR(i,0,n)
  
 //constant
 //--------------------------------------------
@@ -68,7 +68,7 @@ const double PI  = acos(-1.0);
 //debug
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
-
+#define COUT(x) cout<< x << endl;
 //pair sort
 bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
     if(a.second != b.second) return a.second < b.second;
@@ -76,9 +76,29 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 
+double distance(long long x1, long long y1, long long x2, long long y2){
+    return sqrt(pow(x2-x1,2) + pow(y2-y1, 2));
+}
 
 void solve(long long N, std::vector<long long> x, std::vector<long long> y){
-
+    VI a;
+    rep(i, N)a.PB(i);
+    SORT(a);
+    double ret = 0;
+    long long factor =1;
+    FOR(i, 1, N+1)factor *= i;
+    long long debug =0;
+    do{
+        debug++;
+        double dist =0;
+        FOR(i, 1, N){
+            dist += distance(x[a[i]], y[a[i]], x[a[i-1]], y[a[i-1]]);
+        }
+        ret += dist/factor;
+    }while(std::next_permutation(ALL(a)));
+    // debug(debug);;
+    std::cout << std::setprecision(16);
+    COUT(ret);
 }
 
 int main(){

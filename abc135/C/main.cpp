@@ -80,7 +80,20 @@ const double PI = acos(-1.0);
   cerr << #x << " = " << (x) << " (L" << __LINE__ << ")"                       \
        << " " << __FILE__ << endl;
 
-void solve(long long N, std::vector<long long> A, std::vector<long long> B) {}
+void solve(long long N, std::vector<long long> A, std::vector<long long> B) {
+  long long ret =0;
+  REP(i, N){
+    int a = A[i]; int b = B[i];
+    ret += min(a, b);
+    B[i] -= min(a, b);
+    A[i] -= min(a, b);
+    if(B[i]>0){
+      ret += min(A[i+1], B[i]);
+      A[i+1] -= min(A[i+1], B[i]);
+    }
+  }
+  cout<<ret<<endl;
+}
 
 int main() {
   long long N;
