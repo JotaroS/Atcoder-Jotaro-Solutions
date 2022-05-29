@@ -54,17 +54,24 @@ void solve(long long N, std::vector<long long> h){
 
     // くばるDP
     dp[0] = 0;
-    for(int i=0; i < N-1; i++){
-        chmin(dp[i+1], dp[i]+abs(h[i]-h[i+1]));
-        chmin(dp[i+2], dp[i]+abs(h[i]-h[i+2]));
-    }
 
-    // もらうDP
-    dp[0] = 0;
-    for(int i=1; i < N; i++){
-        chmin(dp[i], dp[i-1]+abs(h[i]-h[i-1]));
-        if(i>1)chmin(dp[i], dp[i-2]+abs(h[i]-h[i-2]));
+    rep(i, N-1){
+        FOR(j, 1, 3){
+            chmin(dp[i+j], dp[i]+abs(h[i]-h[i+j]));
+        }
     }
+    // dp[0] = 0;
+    // for(int i=0; i < N-1; i++){
+    //     chmin(dp[i+1], dp[i]+abs(h[i]-h[i+1]));
+    //     chmin(dp[i+2], dp[i]+abs(h[i]-h[i+2]));
+    // }
+
+    // // もらうDP
+    // dp[0] = 0;
+    // for(int i=1; i < N; i++){
+    //     chmin(dp[i], dp[i-1]+abs(h[i]-h[i-1]));
+    //     if(i>1)chmin(dp[i], dp[i-2]+abs(h[i]-h[i-2]));
+    // }
     cout<<dp[N-1]<<endl;
 }
 int main(){

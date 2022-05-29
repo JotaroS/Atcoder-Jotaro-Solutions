@@ -55,7 +55,7 @@ typedef long long LL;
 //repetition
 //------------------------------------------
 #define FOR(i,a,b) for(int i=(a);i<(b);++i)
-#define REP(i,n)  FOR(i,0,n)
+#define rep(i,n)  FOR(i,0,n)
  
 //constant
 //--------------------------------------------
@@ -80,7 +80,16 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 
 
 void solve(long long N){
-    cout<<N/5<<endl;
+    if(N%2==0){
+        N/=2;
+        long long ret=0;
+        while(N){
+            N/=5;
+            ret += N;
+        }
+        cout<<ret<<endl;
+    }
+    else cout<<0<<endl;
 }  
 
 int main(){

@@ -1,13 +1,25 @@
 #include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 using namespace std;
 
+struct Edge{
+  int from;
+  int to;
+  int cost;
+};
 
 int main(int argc, char *argv[]) {
-    int cnt=0;
-  for(int i=1; i<1000; i++){ 
-     if(1000%i==0)cnt++;
+  string s; cin>>s;
+  int a=0, b=0, c=0;
+  for(int i=0;i < s.size(); i++){
+    if(s[i]=='a')a++;
+    if(s[i]=='b')b++;
+    if(s[i]=='c')c++;
   }
-  cout<<cnt;
+  if(abs(a-b)<=1 && abs(b-c)<=1 && abs(c-a)<=1){
+    cout<<"YES"<<endl;
+  }
+  else cout<<"NO"<<endl;
   return 0;
 }

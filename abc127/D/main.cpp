@@ -29,7 +29,20 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, long long M, std::vector<long long> A, std::vector<long long> B, std::vector<long long> C){
-    
+    vector<long long> s(N, 0);
+    SORT(A);
+    s[0] = A[0];
+    for(int i=1; i < N; i++)s[i] = s[i-1] + A[i];
+
+    long long ret =0;
+    rep(i, M){
+        auto ub = std::upper_bound(A.begin(), A.end(), C[i]);
+        int ub_idx = (ub - A.begin());
+        debug(ub_idx);
+        long long ans = s[ub_idx] - s[B[i]] + B[i] * C[i] + s[N-1] - s[ub_idx+1];
+        ret = max(ret, ans);
+    }
+    cout<<ret<<endl;
 }
 int main(){
     long long N;

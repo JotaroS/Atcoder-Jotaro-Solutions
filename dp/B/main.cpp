@@ -49,24 +49,24 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
     else return a.first < b.first;
 }
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
-void solve(long long N, long long K, std::vector<long long> h){
-    vector<ll> dp(N,1e9);
-    dp[0] = 0;
-    for(int i=1; i < N; i++){
+void solve(int N, int K, std::vector<int> h){
+    VI dp(N+K, 1e6);
+    dp[0]=0;
+    rep(i, N){
         for(int j=1; j <= K; j++){
-            if(i>=j)chmin(dp[i], dp[i-j]+abs(h[i]-h[i-j]));
+            chmin(dp[i+j], dp[i]+abs(h[i]-h[i+j]));
         }
     }
     cout<<dp[N-1]<<endl;
 }
 int main(){
-    long long N;
-    scanf("%lld",&N);
-    long long K;
-    scanf("%lld",&K);
-    std::vector<long long> h(N);
+    int N;
+    scanf("%d",&N);
+    int K;
+    scanf("%d",&K);
+    std::vector<int> h(N);
     for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&h[i]);
+        scanf("%d",&h[i]);
     }
     solve(N, K, std::move(h));
     return 0;

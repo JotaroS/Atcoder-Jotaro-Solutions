@@ -51,28 +51,23 @@ bool compare_by_b(pair<LL, LL> a, pair<LL, LL> b) {
 std::uint32_t euclidean_gcd(std::uint32_t a, std::uint32_t b){return b != 0 ? euclidean_gcd(b, a % b) : a;}
 void solve(long long N, std::vector<long long> a, std::vector<long long> b, std::vector<long long> c){
     //dp[activity][i days] = max happiness so far
-    ll dp[3][100000];
-    rep(i, 3){
-        rep(j, 100000){
-            dp[i][j]= 0;
+    vector<vector<ll>> dp(N+1, vector<ll>(3, 0));
+    rep(i, N){
+        rep(j, 3){
+            rep(k, 3){ //today
+                if(j!=k){
+                    ll score=0;
+                    switch(k){
+                        case 0:score=a[i];break;
+                        case 1:score=b[i];break;
+                        case 2:score=c[i];break;
+                    }
+                    chmax(dp[i+1][k], dp[i][j]+score);
+                }
+            }
         }
     }
-    dp[0][0] = a[0];
-    dp[1][0] = b[0];
-    dp[2][0] = c[0];
-    for(int i=1; i < N; i++){
-        chmax(dp[0][i], a[i]+dp[1][i-1]);
-        chmax(dp[0][i], a[i]+dp[2][i-1]);
-
-
-        chmax(dp[1][i], b[i]+dp[0][i-1]);
-        chmax(dp[1][i], b[i]+dp[2][i-1]);
-
-
-        chmax(dp[2][i], c[i]+dp[0][i-1]);
-        chmax(dp[2][i], c[i]+dp[1][i-1]);
-    }
-    cout<< max(max(dp[0][N-1], dp[1][N-1]),dp[2][N-1])<<endl;
+    cout<<max(max(dp[N][0],dp[N][1]), dp[N][2])<<endl;
 }
 int main(){
     long long N;

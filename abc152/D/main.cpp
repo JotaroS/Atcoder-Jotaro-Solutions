@@ -84,62 +84,24 @@ int reverseDigits(int num)
     return rev_num; 
 } 
 void solve(long long N){
-    string s;
-    // int max_keta = 0;
-    // s = to_string(N);
-    // max_keta = s.size();
-    // int ans=0;
-    // for(int i=1; i<=N; i++){
-    //     string s = to_string(i);
-    //     if(s[0]==s[num_keta(s)-1]){
-    //         for(int j = 0; j<=max_keta; j++){
-    //             int factor = (pow(10,j)); if(factor==1)factor=0;
-    //             if((int)(s[0]-48) * ((factor+1))>N)break;
-    //             if(j==0)ans++;
-    //             else if(j==1)ans++;
-    //             else{
-    //                 ans+=(j-2)*9;
-    //             }
-    //             // if(j+1 == num_keta(s))ans--;
-    //         }
-    //     }
-    //     debug(i);
-    //     debug(ans)
-    // }
-    int ans=0;
-    int max_keta = to_string(N).size();
-    for(int i=1; i <= N; i++){
-        s = to_string(i);
-        // int keta = s.length()-1;
-        string core=to_string(reverseDigits(i));
-        if(i%10==0)continue;
-        if(stoi(core)<=N && core[0]==s[s.size()-1] && s[0] == core[core.size()-1])
-        {
-                ans++;
-                cout<<s<<","<<core<<endl;
-        
-        }
-        for(int j = 0; j <max_keta; j++){
-            int factor = pow(10, j)-1;//99, 9999;
-            for(int k = 0; k <= N; k++)
-            {
-                if(factor==0)break;
-                string num = "0";
-                string res = to_string(k);
-                num.insert(1, res);
-                // debug(res)
-                if(stoi(num)<=N && num[0]==s[s.size()-1] && s[0] == num[num.size()-1]){
-                    ans++;
-                    // if(stoi(s)<stoi(num))ans++;
-                    cout<<s<<","<<num<<endl;
-                }
-                if(stoi(num)>N)break;
-            }
-        }
+    int c[10][10];
+    long long ret =0;
+    REP(i, 10){
+        REP(j, 10)c[i][j] = 0;
     }
 
-    cout<<ans<<endl;
-
+    REP(i, N+1){
+        string s = to_string(i);
+        
+        c[s[s.size()-1]-'0'][(int)s[0]-'0'] ++;
+    }
+    for(int i=1; i <= 9; i++){
+        for(int j=1; j <= 9; j++){
+            ret += c[i][j] * c[j][i];
+        }
+    }
+    cout<<ret<<endl;
+    return;
 }
 
 int main(){

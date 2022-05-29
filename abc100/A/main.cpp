@@ -83,15 +83,32 @@ void solve(long long A, long long B){
     return;
 }
 
-int main(){
-    int a,b,c,x,y;
-    cin>>a>>b>>c>>x>>y;
-    int ret =  100000000;
-    for(int i=0; i <=x; i++){
-        for(int j=0; j <=y; j++){
-            int ab = max(x-i, y-j)*2;
-            ret= min(ret, i*a+ j*b+ ab*c);
+vector<bool> flag;
+VVI a;
+VI F;
+VI D;
+int tt = 0;
+void dfs(int v){
+    F[v] = ++tt;
+    flag[v] = true;
+    bool searched = false;
+    for(auto x : a[v]){
+        if(!flag[x]){
+            searched = true;
+            dfs(x);
         }
+    };
+    D[v] = ++tt;
+}
+
+int main(){
+    int n; cin>> n;
+    VI a(100);
+    a[0] = 1;
+    a[1] = 1;
+    for(int i=2; i <=n; i++){
+        a[i] = a[i-1]+a[i-2];
     }
-    cout<<ret<<endl;
+    cout<<a[n]<<endl;
+    return 0;
 }
